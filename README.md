@@ -1,5 +1,4 @@
 # TrackMe
-<hr>
 ## How to use:
 <br><br>
  To read the video and save the file:
