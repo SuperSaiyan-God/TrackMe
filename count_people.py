@@ -372,7 +372,7 @@ while True:
             rects.append((startX, startY, endX, endY))
 
     # horizontal line in the frame which determines the object moving up or down
-    cv2.line(frame, (0, H // 2), (W, H // 2), (255, 255, 255), 2)
+    #cv2.line(frame, (0, H // 2), (W, H // 2), (255, 255, 255), 2)
 
     # use the tracker to see the old object or new object
     objects = ct.update(rects)
