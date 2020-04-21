@@ -2,16 +2,15 @@
 #
 #
 # To read the video and save the file:
-# python count_people.py --modelprototxt mobilenet_ssd/MobileNetSSD_deploy.prototxt
-#	--model mobilenet_ssd/MobileNetSSD_deploy.caffemodel --input pathtoinputvideofile/filename.mp4
-#	--output pathtooutputvideofile/filename.avi
 #
+# python count_people.py --input pathtoinputvideofile/filename.mp4
+#	--output pathtooutputvideofile/filename.avi
 #
 #
 # To read from webcam and save the file:
-# python count_people.py --modelprototxt mobilenet_ssd/MobileNetSSD_deploy.prototxt
-#	--model mobilenet_ssd/MobileNetSSD_deploy.caffemodel
-#	--output pathtooutputvideofile/filename.avi
+#
+# python count_people.py --output pathtooutputvideofile/filename.avi
+
 
 from scipy.spatial import distance as dist
 from collections import OrderedDict
@@ -142,10 +141,6 @@ class DetectCentroid:
 
 # create the argument parse and parse the arguments
 ap = argparse.ArgumentParser()
-ap.add_argument("-mp", "--modelprototxt", required=True,
-                help="path to Caffe 'deploy' prototxt file")
-ap.add_argument("-m", "--model", required=True,
-                help="path to Caffe pre-trained model")
 ap.add_argument("-i", "--input", type=str,
                 help="path to optional input video file")
 ap.add_argument("-o", "--output", type=str,
@@ -164,7 +159,8 @@ CLASSES = ["background", "aeroplane", "bicycle", "bird", "boat",
 
 # load model from disk
 print("[INFO] loading model...")
-net = cv2.dnn.readNetFromCaffe(args["modelprototxt"], args["model"])
+net = cv2.dnn.readNetFromCaffe(
+    'mobilenet_ssd/MobileNetSSD_deploy.prototxt', 'mobilenet_ssd/MobileNetSSD_deploy.caffemodel')
 
 # if a video path was not given transfer to the webcam
 if not args.get("input", False):
