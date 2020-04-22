@@ -3,13 +3,13 @@
 #
 # To read the video and save the file:
 #
-# python count_people.py --input pathtoinputvideofile/filename.mp4
-#	--output pathtooutputvideofile/filename.avi
+# python count_people.py --input path_to_input_videofile/filename.mp4
+#	--output path_to_output_videofile/filename.avi
 #
 #
 # To read from webcam and save the file:
 #
-# python count_people.py --output pathtooutputvideofile/filename.avi
+# python count_people.py --output path_to_output_videofile/filename.avi
 
 
 from scipy.spatial import distance as dist
